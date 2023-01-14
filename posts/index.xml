@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on haekal-alg</title>
+    <link>https://haekal-alg.github.io/posts/</link>
+    <description>Recent content in Posts on haekal-alg</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 14 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://haekal-alg.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HTB: Shoppy</title>
+      <link>https://haekal-alg.github.io/posts/shoppy/</link>
+      <pubDate>Sat, 14 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://haekal-alg.github.io/posts/shoppy/</guid>
+      <description>Enumeration Nmap scan $ nmap -sC -sV -oN nmap/shoppy 10.10.11.180 PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.4p1 Debian 5+deb11u1 (protocol 2.0) | ssh-hostkey: | 3072 9e:5e:83:51:d9:9f:89:ea:47:1a:12:eb:81:f9:22:c0 (RSA) | 256 58:57:ee:eb:06:50:03:7c:84:63:d7:a3:41:5b:1a:d5 (ECDSA) |_ 256 3e:9d:0a:42:90:44:38:60:b3:b6:2c:e9:bd:9a:67:54 (ED25519) 80/tcp open http nginx 1.23.1 |_http-server-header: nginx/1.23.1 |_http-title: Did not follow redirect to http://shoppy.htb Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Based on the nmap scan above, port 80 redirect to http://shoppy.thb so I added 10.</description>
+    </item>
+    
+  </channel>
+</rss>
